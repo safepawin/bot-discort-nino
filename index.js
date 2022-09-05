@@ -32,7 +32,7 @@ client.on('messageCreate', msg => {
         let minIndex = noti.min.findIndex(min => min == currentdate.getMinutes())
 
         let loop = setInterval(() => {
-            if (currentdate.getSeconds() % 10) {
+            if (currentdate.getSeconds() % 10 == 0) {
                 if (hourIndex != -1 && minIndex != -1) {
                     msg.channel.send('@here อิก 5 นาที บอสจะมาแล้ว')
                 }
