@@ -19,22 +19,31 @@ client.on('messageCreate', msg => {
 
     if (msg.content === "-+bot") {
         isEnableNotify = !isEnableNotify
-        var currentdate = new Date();
         let noti = {
             hour: [
-                4 - 1, 10 - 1, 16 - 1, 22 - 1
+                3, 4, 9, 10, 15, 16, 21, 22
             ],
             min: [
-                60 - 5, 30 - 5
+                55, 25
             ]
         }
-        let hourIndex = noti.hour.findIndex(hour => hour == currentdate.getHours())
-        let minIndex = noti.min.findIndex(min => min == currentdate.getMinutes())
 
         let loop = setInterval(() => {
+            var currentdate = new Date();
+            let hourIndex = noti.hour.findIndex(hour => hour == currentdate.getHours())
+            let minIndex = noti.min.findIndex(min => min == currentdate.getMinutes())
+            // console.log(hourIndex);
+            // console.log(minIndex);
+            // console.log(currentdate.getSeconds());
             if (currentdate.getSeconds() % 10 == 0) {
                 if (hourIndex != -1 && minIndex != -1) {
-                    msg.channel.send('@here อิก 5 นาที บอสจะมาแล้ว')
+                    if (noti.hour[hourIndex] % 2 == 0 && noti.min[minIndex] % 25 == 0) {
+                        msg.channel.send('@here อิก 5 นาที เคออสบอสจะมาแล้ว :rabbit: ')
+                    }
+
+                    if (noti.hour[hourIndex] % 3 == 0 && noti.min[minIndex] % 55 == 0) {
+                        msg.channel.send('@here อิก 5 นาที ฟิลบอสจะมาแล้ว :frog: ')
+                    }
                 }
             }
             if (!isEnableNotify) {
