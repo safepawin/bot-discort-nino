@@ -32,7 +32,7 @@ client.on('messageCreate', msg => {
             var currentdate = new Date();
             let hourIndex = noti.hour.findIndex(hour => hour == currentdate.getHours())
             let minIndex = noti.min.findIndex(min => min == currentdate.getMinutes())
-            console.log("Bot Always Work! Start");
+            console.log(`Bot Always Work! Start At ${currentdate.getHours()} : ${currentdate.getMinutes()} : ${currentdate.getSeconds()}`);
             if (currentdate.getSeconds() % 10 == 0) {
                 if (hourIndex != -1 && minIndex != -1) {
                     if (noti.hour[hourIndex] % 2 == 0 && noti.min[minIndex] % 25 == 0) {
