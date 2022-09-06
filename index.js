@@ -50,7 +50,7 @@ client.on('messageCreate', msg => {
             if (!isEnableNotify) {
                 clearInterval(loop)
             }
-        }, 2000)
+        }, 1000)
         msg.channel.send(isEnableNotify ? START_MESSAGE : STOP_MESSAGE)
     }
 
