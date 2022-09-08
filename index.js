@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, } = require('discord.js');
+const { Client, GatewayIntentBits, MessageMentions, } = require('discord.js');
 const client = new Client({
     intents: [GatewayIntentBits.Guilds,
     GatewayIntentBits.MessageContent,
@@ -27,7 +27,6 @@ client.on('messageCreate', msg => {
                 55, 25
             ]
         }
-
         let loop = setInterval(() => {
             var currentdate = new Date();
             let hourIndex = noti.hour.findIndex(hour => hour == currentdate.getHours())
@@ -37,12 +36,12 @@ client.on('messageCreate', msg => {
                 if (hourIndex != -1 && minIndex != -1) {
                     if (noti.hour[hourIndex] % 2 == 0 && noti.min[minIndex] % 25 == 0) {
                         console.log("เคออส");
-                        msg.channel.send('@here อิก 5 นาที เคออสบอสจะมาแล้ว :rabbit: ')
+                        msg.channel.send('<@&985577252349698109> อิก 5 นาที เคออสบอสจะมาแล้ว :rabbit: ')
                     }
 
                     if (noti.hour[hourIndex] % 3 == 0 && noti.min[minIndex] % 55 == 0) {
                         console.log("ฟิล");
-                        msg.channel.send('@here อิก 5 นาที ฟิลบอสจะมาแล้ว :frog: ')
+                        msg.channel.send('<@&985577252349698109> อิก 5 นาที ฟิลบอสจะมาแล้ว :frog: ')
                     }
                 }
             }
