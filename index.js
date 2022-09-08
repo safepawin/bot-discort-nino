@@ -7,7 +7,7 @@ const client = new Client({
 });
 const dotenv = require('dotenv')
 dotenv.config();
-const { START_MESSAGE, STOP_MESSAGE } = require('./config.json');
+const { START_MESSAGE, STOP_MESSAGE, ROLE_ID } = require('./config.json');
 
 let isEnableNotify = false;
 client.on('ready', () => {
@@ -51,6 +51,7 @@ client.on('messageCreate', msg => {
             }
         }, 1000)
         msg.channel.send(isEnableNotify ? START_MESSAGE : STOP_MESSAGE)
+        msg.channel.send(`แจ้งเตือน เฉพาะ ${ROLE_ID.toString()}`)
     }
 
 })
